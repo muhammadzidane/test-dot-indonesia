@@ -1,4 +1,4 @@
 interface DialogFooterProps {
-  onClose: () => void;
-  onOk: () => void;
+  onClose?: () => void;
+  onOk?: () => void;
 }

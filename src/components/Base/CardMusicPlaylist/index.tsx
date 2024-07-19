@@ -1,14 +1,20 @@
+"use client";
+
 import React from "react";
 
 import Image from "next/image";
 
 const CardMusicPlaylist: React.FC<CardMusicPlaylistProps> = ({
   imageSrc,
+  onClick,
   artist,
   title,
 }) => {
   return (
-    <div className="flex flex-wrap justify-center">
+    <div
+      onClick={onClick}
+      className="flex flex-wrap justify-center cursor-pointer"
+    >
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
         <Image
           style={{ objectFit: "contain", height: "170px", width: "100%" }}

@@ -31,7 +31,7 @@ const Dialog: React.FC<DialogProps> = ({
         dialogRef.current &&
         !dialogRef.current.contains(event.target as Node)
       ) {
-        onClose();
+        onClose?.();
       }
     },
     [onClose]

@@ -1,4 +1,4 @@
 interface DialogHeaderProps {
-  onClose: () => void;
+  onClose?: () => void;
   title?: string;
 }
