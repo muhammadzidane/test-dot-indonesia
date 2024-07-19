@@ -10,6 +10,7 @@ import { createUrl } from "@/helpers";
 const TableFooter: React.FC<TableFooterProps> = ({
   currentPage = 1,
   totalPage = 0,
+  pushUrl,
 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -25,7 +26,7 @@ const TableFooter: React.FC<TableFooterProps> = ({
       : parseInt(addPage, 10) + pageIncrement;
 
     newParams.set("page", pageValue.toString());
-    router.push(createUrl("/overview", newParams));
+    router.push(createUrl(pushUrl, newParams));
   };
 
   /**
@@ -51,6 +52,7 @@ const TableFooter: React.FC<TableFooterProps> = ({
       <div className="font-semibold">Total Page: {totalPage}</div>
       <div className="flex gap-4 items-center">
         <span>
+          {/* Page {page} of {totalPage} */}
           Page {page} of {totalPage}
         </span>
         <div className="flex gap-2">

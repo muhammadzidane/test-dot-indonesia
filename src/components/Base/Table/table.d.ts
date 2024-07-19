@@ -1,5 +1,3 @@
-interface TableProps extends TableHeaderProps, TableFooterProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: undefined | any[];
-  withFooter?: boolean;
+interface TableProps extends TableHeaderProps {
+  data: undefined | unknown[];
 }

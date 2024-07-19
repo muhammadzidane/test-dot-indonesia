@@ -1,4 +1,5 @@
 interface TableFooterProps {
-  currentPage?: number;
+  currentPage: number;
   totalPage: number;
+  pushUrl: string;
 }

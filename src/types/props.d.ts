@@ -3,5 +3,6 @@ interface ChildrenProps {
 }
 
 interface ParamPageProps {
-  searchParams: Record<string, undefined | string>;
+  searchParams: Record<string, string>;
+  // searchParams: Record<string, undefined | string>;
 }

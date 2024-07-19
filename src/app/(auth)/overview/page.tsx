@@ -2,22 +2,27 @@ import React, { Suspense } from "react";
 
 import { type Metadata } from "next";
 
-import { OverviewTable } from "./components";
+import { overviewFetchList } from "@/fetch";
+
+import { OverviewTableSkeleton, OverviewTable } from "./components";
 
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "...",
 };
 
-const Overview: React.FC<ParamPageProps> = ({ searchParams }) => {
-  return (
-    <div>
-      {/* <div className="mb-4 font-semibold text-lg">Overview</div>
+const Overview: React.FC<ParamPageProps> = async ({ searchParams }) => {
+  const overviewList = await overviewFetchList({
+    page: searchParams.page,
+    limit: "10",
+  });
 
-      <Suspense fallback={<div>Loading...</div>}>
-        <OverviewTable page={searchParams.page} />
-      </Suspense> */}
-    </div>
+  return (
+    <>
+      <Suspense fallback={<OverviewTableSkeleton />}>
+        <OverviewTable data={overviewList} />
+      </Suspense>
+    </>
   );
 };
 

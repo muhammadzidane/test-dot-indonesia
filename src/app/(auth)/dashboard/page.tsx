@@ -1,28 +1,25 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-import React from "react";
+import React, { Suspense } from "react";
 
 import { type Metadata } from "next";
 
-import { Button } from "@/components";
+import { dashboardFetchPlayList } from "@/fetch/dashboard";
 
-import { logoutAction } from "./actions";
-import { DashboardDialog, BearCounter } from "./components";
+import { MusicPlayListSkeleton, MusicPlayList } from "./components";
 
 export const metadata: Metadata = {
-  title: "Dashboard",
+  title: "Dashboard - DOT Indonesia",
   description: "...",
 };
 
-const Dashboard = () => {
-  return (
-    <div>
-      <form action={logoutAction}>
-        <Button type="submit">Logout</Button>
-      </form>
+const Dashboard = async () => {
+  const playlist = await dashboardFetchPlayList({ limit: "20", page: "1" });
 
-      <BearCounter />
-      <DashboardDialog />
-    </div>
+  return (
+    <>
+      <Suspense fallback={<MusicPlayListSkeleton />}>
+        <MusicPlayList data={playlist} />
+      </Suspense>
+    </>
   );
 };
 
